@@ -7,6 +7,12 @@ vim.cmd [[
     autocmd FileType qf set nobuflisted
   augroup end
 
+  augroup number_toggle
+      autocmd!
+      autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &number | set relativenumber | endif
+      autocmd BufLeave,FocusLost,InsertEnter,WinLeave * if &number | set norelativenumber | endif
+  augroup END
+
   augroup _git
     autocmd!
     autocmd FileType gitcommit setlocal wrap
